@@ -1,0 +1,86 @@
+import { defineQuery } from 'groq';
+
+import { arrayCommonQuery } from '@/lib/sanity/queries/array';
+import { codeQuery } from '@/lib/sanity/queries/common/code';
+import {
+  imageQuery,
+  responsiveImageQuery,
+} from '@/lib/sanity/queries/common/image';
+import { linkQuery } from '@/lib/sanity/queries/common/link';
+import { quoteQuery } from '@/lib/sanity/queries/common/quote';
+import {
+  remoteVideoQuery,
+  videoQuery,
+} from '@/lib/sanity/queries/common/video';
+import { createQuery } from '@/lib/sanity/query';
+
+export const projectsQuery = defineQuery(`
+  *[_type == 'project'] | order(date desc)  {
+    _id,
+    slug,
+    name,
+    description,
+    date
+  }
+`);
+
+export const projectContentQuery = `
+  ${arrayCommonQuery},
+  _type == 'code' => ${codeQuery},
+  _type == 'image' => ${imageQuery},
+  _type == 'responsiveImage' => ${responsiveImageQuery},
+  _type == 'video' => ${videoQuery},
+  _type == 'remoteVideo' => ${remoteVideoQuery},
+  _type == 'quote' => ${quoteQuery},
+  _type == 'richText' => {
+    ...
+  },
+  _type == 'md' => {
+    ...
+  },
+  _type == 'temp' => {
+    names[] {
+      ...
+    }
+  }
+`;
+
+export const projectQuery = defineQuery(`
+  *[
+    _type == 'project' &&
+    slug.current == $slug
+  ][0] {
+    _id,
+    _type,
+    name,
+    description,
+    descriptionLong,
+    thumbnail ${imageQuery},
+    content[] {
+      ${arrayCommonQuery},
+      span,
+      content[] {
+        ${projectContentQuery}
+      },
+    },
+    attributions[] {
+      _key,
+      name,
+      contacts[]{
+        _key,
+        ...(@->{
+          _id,
+          name,
+          link-> ${linkQuery}
+        })
+      }
+    },
+    private,
+    hideFromSearchEngines
+  }
+`);
+
+export const getProjects = createQuery(projectsQuery);
+export const getProject = createQuery(projectQuery).withParams<{
+  slug: string;
+}>;

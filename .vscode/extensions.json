@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "sanity-io.vscode-sanity",
+    "vunguyentuan.vscode-postcss"
+  ]
+}
