@@ -6,9 +6,7 @@ export const config = defineConfig(
   },
   ({ production }) => ({
     url: {
-      studio: production
-        ? 'https://mike-farrow-portfolio-sanity-studio.vercel.app'
-        : 'http://localhost:3333',
+      studio: production ? 'https://cms.farrow.io' : 'http://localhost:3333',
     },
   })
 );
