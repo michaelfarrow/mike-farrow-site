@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "concurrently --prefix ' ' -c 'bgGreen,bgRed' \"next dev --webpack\" \"npm run watch\"",
-    "prebuild": "npm run generate:types",
+    "prebuild": "npm run generate:types && npm run lint && npm run check",
     "build": "next build --webpack",
     "start": "next start",
     "watch": "chokidar ./node_modules/@mikefarrow/cms/schema.json ./src/lib/sanity/queries --initial -c 'npm run generate:types'",
