@@ -1,12 +1,12 @@
 'use client';
 
-import { SUPPORTED_VIDEO_TYPES } from '@mikefarrow/cms';
 import clsx from 'clsx';
 import getVideoId from 'get-video-id';
 import { stegaClean } from 'next-sanity';
 import React from 'react';
 
 import type { CommonSchemaType } from '@/types/content';
+import { config } from '@/lib/config';
 import { sanityImageCroppedSize } from '@/lib/image';
 import { stegaValueDecode } from '@/lib/stega';
 import { LiteVideoExtendsProps } from '@/components/general/video/lite-video';
@@ -25,7 +25,7 @@ export interface SanityVideoProps {
 }
 
 export const videoComponentMap: Record<
-  keyof typeof SUPPORTED_VIDEO_TYPES,
+  keyof typeof config.videoTypes,
   React.ComponentType<LiteVideoExtendsProps & { title: string; id: string }>
 > = {
   youTube: YoutubeVideo,
@@ -87,10 +87,10 @@ export function SanityVideo({ video, alt, sizes }: SanityVideoProps) {
     const matchedVideo = getVideoId(video.url);
     if (!matchedVideo?.id) return null;
 
-    for (const [key, type] of Object.entries(SUPPORTED_VIDEO_TYPES)) {
+    for (const [key, type] of Object.entries(config.videoTypes)) {
       if (type.test(video.url)) {
         const VideoComponent =
-          videoComponentMap[key as keyof typeof SUPPORTED_VIDEO_TYPES];
+          videoComponentMap[key as keyof typeof config.videoTypes];
         return <VideoComponent id={matchedVideo.id} {...commonProps} />;
       }
     }

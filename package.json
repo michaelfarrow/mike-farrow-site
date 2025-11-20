@@ -6,15 +6,16 @@
     "prebuild": "npm run generate:types",
     "build": "next build --webpack",
     "start": "next start",
-    "watch": "chokidar ./node_modules/@mikefarrow/cms/schema.json ./src/lib/sanity/queries -c 'npm run generate:types'",
+    "watch": "chokidar ./node_modules/@mikefarrow/cms/schema.json ./src/lib/sanity/queries --initial -c 'npm run generate:types'",
     "lint": "eslint .",
     "check": "tsc --noEmit",
     "generate:types": "sanity typegen generate",
     "prepare": "husky"
   },
   "dependencies": {
-    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#28d103d39b3419be02d127c1c41d9cbc3b96309d",
+    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#66c2fdfb4aa3e425203da2d1dfe904cf04a61463",
     "@mikefarrow/prettier": "github:michaelfarrow/prettier#3.6.2-1",
+    "@sanity/image-url": "^1.2.0",
     "@uidotdev/usehooks": "^2.4.1",
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",

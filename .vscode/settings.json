@@ -7,10 +7,10 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "[markdown]": {
-    "editor.formatOnSave": false
-  },
   "[typescriptreact]": {
+    "editor.wordWrap": "bounded"
+  },
+  "[json]": {
     "editor.wordWrap": "bounded"
   },
   "emmet.includeLanguages": {

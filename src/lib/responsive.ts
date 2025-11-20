@@ -1,4 +1,4 @@
-import { config } from '@mikefarrow/cms';
+import { config } from '@/lib/config';
 
 export const BREAKPOINTS_MIN = config.breakpoints;
 

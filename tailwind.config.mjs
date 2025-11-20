@@ -1,5 +1,6 @@
-import { config as cmsConfig } from '@mikefarrow/cms';
 import { mapValues } from 'lodash-es';
+
+import { config as appConfig } from './src/lib/config';
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -20,7 +21,7 @@ const config = {
     //   },
     // },
     screens: mapValues(
-      cmsConfig.breakpoints,
+      appConfig.breakpoints,
       (breakpoint) => `${breakpoint.width}px`
     ),
   },
