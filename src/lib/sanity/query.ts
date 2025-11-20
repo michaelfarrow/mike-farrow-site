@@ -61,7 +61,7 @@ export async function fetch<T extends Query>(
       stega: draftModeEnabled,
       token: process.env.SANITY_STUDIO_API_READ_TOKEN,
       next: {
-        revalidate: revalidate || 60,
+        revalidate: revalidate || undefined,
       },
     }
   );
