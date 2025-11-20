@@ -5,6 +5,9 @@ import { sanityClient } from '@/lib/sanity/client';
 
 export type Query = Parameters<typeof sanityClient.fetch>[0];
 export type Params = Parameters<typeof sanityClient.fetch>[1];
+export type QueryOptions = {
+  revalidate?: number;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type NullType = {};
@@ -37,7 +40,11 @@ function nullsToUndefined<T>(obj: T): NullsToUndefined<T> {
   return obj as any;
 }
 
-export async function fetch<T extends Query>(query: T, params?: Params) {
+export async function fetch<T extends Query>(
+  query: T,
+  params: Params = {},
+  { revalidate }: QueryOptions = {}
+) {
   let draftModeEnabled = false;
 
   try {
@@ -54,7 +61,7 @@ export async function fetch<T extends Query>(query: T, params?: Params) {
       stega: draftModeEnabled,
       token: process.env.SANITY_STUDIO_API_READ_TOKEN,
       next: {
-        revalidate: 60,
+        revalidate: revalidate || 60,
       },
     }
   );
@@ -62,11 +69,23 @@ export async function fetch<T extends Query>(query: T, params?: Params) {
   return nullsToUndefined(res);
 }
 
-export function createQuery<T extends Query>(query: T) {
-  const rawFetch = () => fetch<T>(query);
+export function createQuery<T extends Query>(query: T, options?: QueryOptions) {
+  const q = (fetchOptions?: QueryOptions) =>
+    fetch<T>(query, undefined, { ...options, ...fetchOptions });
 
-  rawFetch.withParams = <P extends Params>(params: P) =>
-    fetch<T>(query, params);
+  q.withOptions = (fetchOptions: QueryOptions) => {
+    return () => q(fetchOptions);
+  };
 
-  return rawFetch;
+  q.withParams = <P extends Params>() => {
+    const q = (params: P, fetchOptions?: QueryOptions) =>
+      fetch<T>(query, params, { ...options, ...fetchOptions });
+
+    q.withOptions = (fetchOptions: QueryOptions) => (params: P) =>
+      q(params, fetchOptions);
+
+    return q;
+  };
+
+  return q;
 }

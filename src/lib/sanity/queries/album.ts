@@ -24,4 +24,4 @@ export const albumQuery = defineQuery(`
 export const getAlbums = createQuery(albumsQuery);
 export const getAlbum = createQuery(albumQuery).withParams<{
   slug: string;
-}>;
+}>();

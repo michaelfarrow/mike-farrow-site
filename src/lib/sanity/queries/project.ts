@@ -83,4 +83,4 @@ export const projectQuery = defineQuery(`
 export const getProjects = createQuery(projectsQuery);
 export const getProject = createQuery(projectQuery).withParams<{
   slug: string;
-}>;
+}>();
