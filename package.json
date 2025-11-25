@@ -13,9 +13,13 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#66c2fdfb4aa3e425203da2d1dfe904cf04a61463",
+    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#f5c5967ffdb1e71a4e4ac4fdf2137192bade681e",
     "@mikefarrow/prettier": "github:michaelfarrow/prettier#3.6.2-1",
     "@sanity/image-url": "^1.2.0",
+    "@tanstack/react-query": "^5.90.10",
+    "@trpc/client": "^11.7.2",
+    "@trpc/react-query": "^11.7.2",
+    "@trpc/server": "^11.7.2",
     "@uidotdev/usehooks": "^2.4.1",
     "change-case": "^5.4.4",
     "clsx": "^2.1.1",
@@ -34,7 +38,9 @@
     "react-refractor": "^4.0.0",
     "refractor": "^5.0.0",
     "styled-components": "^6.1.19",
-    "title-case": "^4.3.2"
+    "superjson": "^2.2.5",
+    "title-case": "^4.3.2",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",

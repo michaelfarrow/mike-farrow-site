@@ -13,6 +13,7 @@ import React from 'react';
 import { Logo } from '@/components/global/logo';
 import { Navigation } from '@/components/global/navigation';
 import { Container } from '@/components/page/container';
+import { TRPCProvider } from '@/trpc/react';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -43,7 +44,7 @@ export default async function RootLayout({
             <Navigation />
           </Container>
         </header>
-        {children}
+        <TRPCProvider>{children}</TRPCProvider>
         <DraftMode enabled={draftModeEnabled} />
       </body>
     </html>

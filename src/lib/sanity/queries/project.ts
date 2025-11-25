@@ -1,6 +1,6 @@
 import { defineQuery } from 'groq';
 
-import { arrayCommonQuery } from '@/lib/sanity/queries/array';
+import { arrayCommonQuery } from '@/lib/sanity/queries/common/array';
 import { codeQuery } from '@/lib/sanity/queries/common/code';
 import {
   imageQuery,
