@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { getProject } from '@/lib//sanity/queries/project';
 import { memo } from '@/lib/react';
@@ -13,10 +13,7 @@ import { ContentMarkdown } from '@/components/content/markdown';
 import { ContentPicture } from '@/components/content/picture';
 import { ContentQuote } from '@/components/content/quote';
 import { ContentVideo } from '@/components/content/video';
-import {
-  Array,
-  conditionalComponent as cc,
-} from '@/components/sanity/array';
+import { Array, conditionalComponent as cc } from '@/components/sanity/array';
 import { Sortable, SortableChild } from '@/components/sanity/sortable';
 
 // import styles from './content.module.css';
@@ -36,7 +33,7 @@ const ProjectContentItem = memo(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     full,
     ...rest
-  }: React.ComponentPropsWithoutRef<'div'> & {
+  }: ComponentPropsWithoutRef<'div'> & {
     block: ContentItem;
     SortableChild: SortableChild;
     full: boolean;

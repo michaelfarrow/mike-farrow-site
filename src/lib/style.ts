@@ -1,14 +1,14 @@
-import React from 'react';
+import { CSSProperties } from 'react';
 
 import { Falsey } from '@/lib/types';
 
-export type CSSPropertiesWithVars = React.CSSProperties & {
+export type CSSPropertiesWithVars = CSSProperties & {
   [key: `--${string}`]: unknown;
 };
 
 export function styleWithVars(
-  styles: React.CSSProperties | undefined,
+  styles: CSSProperties | undefined,
   vars: Falsey | CSSPropertiesWithVars | undefined
 ) {
-  return { ...styles, ...vars } as React.CSSProperties;
+  return { ...styles, ...vars } as CSSProperties;
 }

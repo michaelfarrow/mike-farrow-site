@@ -4,7 +4,7 @@ import { /* isEqual,*/ mapValues } from 'lodash-es';
 import { createDataAttribute, SanityDocument } from 'next-sanity';
 import { useOptimistic } from 'next-sanity/hooks';
 import { LiteralUnion, Paths } from 'type-fest';
-import React, { ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { DisableStega } from '@/context/stega';
 import { config } from '@/lib/config';
@@ -82,7 +82,7 @@ export function SortableContent<
   group,
   disable,
   ...rest
-}: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+}: Omit<ComponentPropsWithoutRef<'div'>, 'children'> & {
   document: T;
   path: P;
   items: C[];
@@ -177,7 +177,7 @@ export function Sortable<
   group,
   disable,
   ...rest
-}: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'> & {
+}: Omit<ComponentPropsWithoutRef<'div'>, 'children'> & {
   document: T;
   path: P;
   getItems: FetchItems;

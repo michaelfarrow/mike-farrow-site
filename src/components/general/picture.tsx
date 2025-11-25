@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { omit, orderBy } from 'lodash-es';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { getImageProps, ImageProps } from 'next/image';
 
 import { Image, IMAGE_DEFAULT_QUALITY } from '@/components/general/image';
@@ -15,7 +15,7 @@ export type PictureImage = {
 };
 
 export interface PictureProps
-  extends React.ComponentPropsWithoutRef<'picture'>,
+  extends ComponentPropsWithoutRef<'picture'>,
     Pick<ImageProps, 'alt' | 'loader' | 'quality'> {
   images: PictureImage[];
   sizes?: string;

@@ -1,7 +1,7 @@
-import React from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-export interface FigureProps extends React.ComponentPropsWithoutRef<'figure'> {
-  caption: React.ReactNode;
+export interface FigureProps extends ComponentPropsWithoutRef<'figure'> {
+  caption: ReactNode;
   captionClassName?: string;
 }
 

@@ -1,5 +1,10 @@
 import { isEqual as deepEqual, mapValues, omitBy } from 'lodash-es';
-import { FunctionComponent, isValidElement, memo as reactMemo } from 'react';
+import {
+  FunctionComponent,
+  isValidElement,
+  memo as reactMemo,
+  ReactNode,
+} from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function is(x: any, y: any) {
@@ -70,7 +75,7 @@ export function memo<P>(
   });
 }
 
-export function nodeToString(reactNode: React.ReactNode): string {
+export function nodeToString(reactNode: ReactNode): string {
   let string = '';
   if (typeof reactNode === 'string') {
     string = reactNode;

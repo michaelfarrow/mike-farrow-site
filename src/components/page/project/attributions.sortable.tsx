@@ -1,7 +1,7 @@
 'use client';
 
 import { stegaClean } from 'next-sanity';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 // import { useStegaValue } from '@/hooks/stega';
 import type { getProject } from '@/lib//sanity/queries/project';
@@ -17,7 +17,7 @@ const ProjectAttribution = memo(
     attribution,
     SortableChild,
     ...rest
-  }: React.ComponentPropsWithoutRef<'div'> & {
+  }: ComponentPropsWithoutRef<'div'> & {
     attribution: Attribution;
     SortableChild: SortableChild;
   }) {

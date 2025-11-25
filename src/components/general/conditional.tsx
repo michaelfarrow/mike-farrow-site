@@ -1,8 +1,8 @@
-import React from 'react';
+import { JSX } from 'react';
 
 export interface ConditionalProps<T> {
   value?: T;
-  children: (value: NonNullable<T>) => React.JSX.Element | null | undefined;
+  children: (value: NonNullable<T>) => JSX.Element | null | undefined;
   numerical?: boolean;
 }
 

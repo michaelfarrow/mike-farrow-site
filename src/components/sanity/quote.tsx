@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import type { CommonSchemaType } from '@/types/content';
 import { ContentMarkdown } from '@/components/content/markdown';
@@ -7,8 +7,7 @@ import { MaybeLink } from '@/components/content/maybe-link';
 
 export type SanityQuote = CommonSchemaType<'quote'>;
 
-export interface SanityQuoteProps
-  extends React.ComponentPropsWithoutRef<'div'> {
+export interface SanityQuoteProps extends ComponentPropsWithoutRef<'div'> {
   quote: SanityQuote;
 }
 

@@ -2,12 +2,18 @@
 
 import clsx from 'clsx';
 import { PiPlay as PlayIcon } from 'react-icons/pi';
-import React, { HTMLAttributes, useEffect, useState } from 'react';
+import {
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 
-const LITE_VIDEO_DEFAULT_CONTAINER: React.ElementType = 'article';
+const LITE_VIDEO_DEFAULT_CONTAINER: ElementType = 'article';
 
 export interface LiteVideoProps<
-  T extends React.ElementType = typeof LITE_VIDEO_DEFAULT_CONTAINER,
+  T extends ElementType = typeof LITE_VIDEO_DEFAULT_CONTAINER,
 > {
   title: string;
   aspect?: number;
@@ -16,11 +22,9 @@ export interface LiteVideoProps<
   onIframeAdded?: () => void;
   containerElement?: T;
   containerAttrs?: Partial<HTMLAttributes<T>>;
-  children: React.ReactNode;
-  preconnect: React.ReactNode;
-  poster:
-    | React.ReactNode
-    | ((props: { initialised: boolean }) => React.ReactNode);
+  children: ReactNode;
+  preconnect: ReactNode;
+  poster: ReactNode | ((props: { initialised: boolean }) => ReactNode);
 }
 
 export type LiteVideoExtendsProps = Omit<
@@ -28,7 +32,7 @@ export type LiteVideoExtendsProps = Omit<
   'preconnect' | 'children'
 >;
 
-export function LiteVideo<T extends React.ElementType>({
+export function LiteVideo<T extends ElementType>({
   title,
   aspect = 16 / 9,
   announce = 'Watch',

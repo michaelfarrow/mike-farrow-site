@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { stegaClean } from 'next-sanity';
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import type { CommonSchemaType } from '@/types/content';
 import { stegaValueDecode } from '@/lib/stega';
@@ -8,7 +8,7 @@ import { Code } from '@/components/general/code';
 
 export type SanityCode = CommonSchemaType<'code'>;
 
-export interface SanityCodeProps extends React.ComponentPropsWithoutRef<'div'> {
+export interface SanityCodeProps extends ComponentPropsWithoutRef<'div'> {
   code: SanityCode;
 }
 

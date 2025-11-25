@@ -1,9 +1,9 @@
-import React from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { stegaCleanObject } from '@/lib/stega';
 import { Figure } from '@/components/general/figure';
 
-export interface CaptionedProps extends React.ComponentPropsWithoutRef<'div'> {
+export interface CaptionedProps extends ComponentPropsWithoutRef<'div'> {
   caption?: string;
 }
 

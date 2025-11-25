@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import getVideoId from 'get-video-id';
 import { stegaClean } from 'next-sanity';
-import React from 'react';
+import React, { ComponentType } from 'react';
 
 import type { CommonSchemaType } from '@/types/content';
 import { config } from '@/lib/config';
@@ -26,7 +26,7 @@ export interface SanityVideoProps {
 
 export const videoComponentMap: Record<
   keyof typeof config.videoTypes,
-  React.ComponentType<LiteVideoExtendsProps & { title: string; id: string }>
+  ComponentType<LiteVideoExtendsProps & { title: string; id: string }>
 > = {
   youTube: YoutubeVideo,
   vimeo: VimeoVideo,

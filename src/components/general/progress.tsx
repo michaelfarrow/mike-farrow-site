@@ -1,11 +1,12 @@
 'use client';
 
 import clsx from 'clsx';
+import { ComponentPropsWithoutRef } from 'react';
 
 // import { useAnimationFrameLoop } from 'react-timing-hooks';
-// import React, { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
-export interface Props extends React.ComponentPropsWithoutRef<'div'> {
+export interface Props extends ComponentPropsWithoutRef<'div'> {
   className?: string;
   min?: number;
   max?: number;

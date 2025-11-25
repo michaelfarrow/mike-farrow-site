@@ -8,7 +8,7 @@ import { DraftMode } from '@/components/studio/draft-mode';
 import '@/styles/code.css';
 import '@/styles/globals.css';
 
-import React from 'react';
+import { ReactNode } from 'react';
 
 import { Logo } from '@/components/global/logo';
 import { Navigation } from '@/components/global/navigation';
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const draftModeEnabled = (await draftMode()).isEnabled;
   return (
