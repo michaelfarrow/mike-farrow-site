@@ -3,9 +3,9 @@ import { getProjects } from '@/lib/sanity/queries/project';
 import { Search } from '@/app/search-test';
 
 const projects = createPage('home', getProjects, {
-  metadata: () => ({
-    title: `Home`,
-  }),
+  // metadata: () => ({
+  //   title: `Home`,
+  // }),
   render: () => {
     return (
       <div>
