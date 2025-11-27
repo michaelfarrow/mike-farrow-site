@@ -13,7 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#a03a9e3a83541fea00e47e00bb06dea37ec55cd1",
+    "@mikefarrow/cms": "github:michaelfarrow/mike-farrow-cms#5f9e9e21fbb409a391ed19e5cbd6eecd18e8488a",
     "@mikefarrow/prettier": "github:michaelfarrow/prettier#28eac082c27b13061f92dc6ba1d7563f04eb6a4f",
     "@sanity/image-url": "^1.2.0",
     "@tanstack/react-query": "^5.90.10",
