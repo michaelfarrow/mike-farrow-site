@@ -1,3 +1,4 @@
+import typography from '@tailwindcss/typography';
 import { mapValues } from 'lodash-es';
 
 import { config as appConfig } from './src/lib/config';
@@ -25,7 +26,7 @@ const config = {
       (breakpoint) => `${breakpoint.width}px`
     ),
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;
