@@ -31,6 +31,7 @@ export function Search({ queryLengthMin = 3, ...rest }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState<string>();
   const {
     data: results,
+    isLoading,
     isFetching,
     isEnabled,
   } = trpc.search.useQuery(
@@ -63,37 +64,41 @@ export function Search({ queryLengthMin = 3, ...rest }: SearchProps) {
   return (
     <div {...rest}>
       <input placeholder='Search' onChange={handleInputChange} />
-      {allResults.length > 0 && (
-        <ul
+      {!isLoading && searchQuery && (
+        <div
           className={`transition-opacity duration-300 ${isFetching ? 'opacity-60' : 'opacity-100'}`}
         >
-          {allResults.map((result) => {
-            if (!result.name || !result?.slug?.current) return null;
+          {(allResults.length === 0 && <div>No Results</div>) || (
+            <ul>
+              {allResults.map((result) => {
+                if (!result.name || !result?.slug?.current) return null;
 
-            const clients =
-              ('client' in result &&
-                result.client &&
-                result.client
-                  .map((client) => client.name)
-                  .filter(
-                    (client): client is Required<typeof client> => !!client
-                  )) ||
-              [];
+                const clients =
+                  ('client' in result &&
+                    result.client &&
+                    result.client
+                      .map((client) => client.name)
+                      .filter(
+                        (client): client is Required<typeof client> => !!client
+                      )) ||
+                  [];
 
-            return (
-              <li key={result._id}>
-                <Link
-                  href={RESOLVER_MAPPING[result._type]({
-                    slug: { current: result.slug.current },
-                  })}
-                >
-                  {result.name}
-                  {clients.length ? `- ${clients.join(', ')}` : ''}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                return (
+                  <li key={result._id}>
+                    <Link
+                      href={RESOLVER_MAPPING[result._type]({
+                        slug: { current: result.slug.current },
+                      })}
+                    >
+                      {result.name}
+                      {clients.length ? `- ${clients.join(', ')}` : ''}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );

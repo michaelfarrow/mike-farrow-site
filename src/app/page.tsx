@@ -1,6 +1,6 @@
 import { createPage } from '@/lib/page';
 import { getProjects } from '@/lib/sanity/queries/project';
-import { Search } from '@/app/search-test';
+import { Search } from '@/components/global/search';
 
 const projects = createPage('home', getProjects, {
   // metadata: () => ({
