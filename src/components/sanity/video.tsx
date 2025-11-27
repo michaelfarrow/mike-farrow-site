@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import getVideoId from 'get-video-id';
 import { stegaClean } from 'next-sanity';
-import React, { ComponentType } from 'react';
+import { ComponentType } from 'react';
 
 import type { CommonSchemaType } from '@/types/content';
 import { config } from '@/lib/config';

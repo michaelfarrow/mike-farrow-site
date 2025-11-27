@@ -1,7 +1,6 @@
+import breakpoints from '@mikefarrow/cms/config/breakpoints';
 import typography from '@tailwindcss/typography';
 import { mapValues } from 'lodash-es';
-
-import { config as appConfig } from './src/lib/config';
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -21,10 +20,7 @@ const config = {
     //     200: '#fff000',
     //   },
     // },
-    screens: mapValues(
-      appConfig.breakpoints,
-      (breakpoint) => `${breakpoint.width}px`
-    ),
+    screens: mapValues(breakpoints, (breakpoint) => `${breakpoint.width}px`),
   },
   plugins: [typography],
 };

@@ -4,7 +4,7 @@ import { /* isEqual,*/ mapValues } from 'lodash-es';
 import { createDataAttribute, SanityDocument } from 'next-sanity';
 import { useOptimistic } from 'next-sanity/hooks';
 import { LiteralUnion, Paths } from 'type-fest';
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { DisableStega } from '@/context/stega';
 import { config } from '@/lib/config';

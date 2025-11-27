@@ -1,7 +1,7 @@
 import { capitalCase } from 'change-case';
 import { titleCase } from 'title-case';
 import type { ReactNode } from 'react';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 export type ArrayItem = {
   _key: string;
