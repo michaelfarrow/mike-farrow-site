@@ -19,7 +19,10 @@ export function Navigation() {
       <ul>
         {links.map(({ href, title }, i) => (
           <li key={i}>
-            <Link className={clsx(segment === href && 'font-bold')} href={href}>
+            <Link
+              className={clsx(`/${segment}` === href && 'font-bold')}
+              href={href}
+            >
               {title}
             </Link>
           </li>
