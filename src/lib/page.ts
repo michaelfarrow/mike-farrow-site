@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { pascalCase } from 'change-case';
-
 import { ReactNode } from 'react';
-
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 

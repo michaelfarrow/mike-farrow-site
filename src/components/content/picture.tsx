@@ -1,8 +1,5 @@
 import { Captioned, CaptionedProps } from '@/components/content/captioned';
-import {
-  SanityPicture,
-  SanityPictureProps,
-} from '@/components/sanity/picture';
+import { SanityPicture, SanityPictureProps } from '@/components/sanity/picture';
 
 export interface ContentPictureProps
   extends Omit<CaptionedProps, 'caption'>,

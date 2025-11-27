@@ -9,10 +9,7 @@ import { ContentMarkdown } from '@/components/content/markdown';
 import { ContentPicture } from '@/components/content/picture';
 import { ContentQuote } from '@/components/content/quote';
 import { ContentVideo } from '@/components/content/video';
-import {
-  Array,
-  conditionalComponent as cc,
-} from '@/components/sanity/array';
+import { Array, conditionalComponent as cc } from '@/components/sanity/array';
 
 const CONTAINER_MAX = BREAKPOINTS_MIN['2xl'].width;
 
