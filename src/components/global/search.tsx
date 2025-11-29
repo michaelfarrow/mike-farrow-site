@@ -19,24 +19,18 @@ export interface SearchProps extends ComponentPropsWithRef<'div'> {
 export function Search({ queryLengthMin = 3, ...rest }: SearchProps) {
   const [query, setQuery] = useState<string>();
 
-  const setSearchQueryDebounced = debounce(
-    (q: string) => {
-      setQuery(q);
-    },
-    500,
-    { leading: true }
-  );
+  const setQueryDebounced = debounce(setQuery, 500, { leading: true });
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const q = sanitizeQuery(e.target.value);
 
     if (q.length < queryLengthMin) {
-      setSearchQueryDebounced.cancel();
+      setQueryDebounced.cancel();
       setQuery(undefined);
       return;
     }
 
-    setSearchQueryDebounced(q);
+    setQueryDebounced(q);
   };
 
   return (

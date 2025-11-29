@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { hasSlug } from '@/lib/document';
 import { createPage } from '@/lib/page';
 import { getAlbums } from '@/lib/sanity/queries/album';
+import { Container } from '@/components/page/container';
 
 const albums = createPage('albums', getAlbums, {
   metadata: () => ({
@@ -11,7 +12,7 @@ const albums = createPage('albums', getAlbums, {
   }),
   render: (albums) => {
     return (
-      <div>
+      <Container>
         <ul>
           {albums.map((album) => {
             if (!hasSlug(album)) return null;
@@ -22,7 +23,7 @@ const albums = createPage('albums', getAlbums, {
             );
           })}
         </ul>
-      </div>
+      </Container>
     );
   },
 });

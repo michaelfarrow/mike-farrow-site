@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { draftMode } from 'next/headers';
 
 import { config } from '@/lib/config';
+import { Search } from '@/components/global/search';
 import { DraftMode } from '@/components/studio/draft-mode';
 
 import '@/styles/code.css';
@@ -38,13 +39,16 @@ export default async function RootLayout({
   return (
     <html lang='en' className={(draftModeEnabled && 'draft-mode') || undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
-          <Container>
-            <Logo />
-            <Navigation />
-          </Container>
-        </header>
-        <TRPCProvider>{children}</TRPCProvider>
+        <TRPCProvider>
+          <header>
+            <Container>
+              <Logo />
+              <Navigation />
+              <Search />
+            </Container>
+          </header>
+          {children}
+        </TRPCProvider>
         <DraftMode enabled={draftModeEnabled} />
       </body>
     </html>

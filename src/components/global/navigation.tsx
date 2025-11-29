@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 const links = [
+  { href: '/', title: 'Home' },
   { href: resolve.album.index(), title: 'Albums' },
   { href: resolve.project.index(), title: 'Projects' },
   { href: resolve.cv(), title: 'CV' },
@@ -20,7 +21,7 @@ export function Navigation() {
         {links.map(({ href, title }, i) => (
           <li key={i}>
             <Link
-              className={clsx(`/${segment}` === href && 'font-bold')}
+              className={clsx(`/${segment || ''}` === href && 'font-bold')}
               href={href}
             >
               {title}
